@@ -38,7 +38,7 @@ var fighterDefs={
                 frames: [
                     {duration: 20, movement: 0, cancel: false},
                     {duration: 40, movement: 0, cancel: false},
-                    {duration: 10, movement: 1, cancel: false, attack: {range: 10, damage: 6, type: "top", direction: "f", blockState: "blocked_top"}, z: 2},
+                    {duration: 10, movement: 1, cancel: false, attack: {range: 10, damage: 7, type: "top", direction: "f", blockState: "blocked_top"}, z: 2},
                     {duration: 26, movement: 0, cancel: false},
                 ],
                 endState: "idle",
@@ -166,8 +166,8 @@ var fighterDefs={
             matrix: {
                 gridPos: [0,22],
                 frames: [
-                    {duration: 5, movement: 0, cancel: false, hitboxMod: {top:{shift:-5},mid:{shift:-3},bot:{}}},
-                    {duration: 10, movement: 0, cancel: false, keyToHold: "pull", hitboxMod: {top:{shift:-12},mid:{shift:-5},bot:{}}},
+                    {duration: 5, movement: 0, cancel: false, hitboxMod: {top:{shift:-8},mid:{shift:-4},bot:{}}},
+                    {duration: 10, movement: 0, cancel: false, keyToHold: "pull", hitboxMod: {top:{shift:-12},mid:{shift:-10},bot:{}}},
                     {duration: 10, movement: 0, cancel: true},
                 ],
                 endState: "idle",

@@ -14,7 +14,7 @@ class Fighter {
         this.stance = 100;
         this.stanceBroken = 0;
         if(isMe){this.x = 45}
-        this.hp = 20;
+        this.hp = 25;
         this.energy = 20;
         this.energyRegen = 0.05;
         if(!isMe) this.energyRegen = 0.1;
@@ -32,7 +32,7 @@ class Fighter {
         this.stance = 100;
         this.stanceBroken = 0;
         if(this.isMe){this.x = 45}
-        this.hp = 20;
+        this.hp = 25;
         this.energy = 20;
         this.energyRegen = 0.05;
         if(!this.isMe) this.energyRegen = 0.1;
@@ -178,7 +178,7 @@ class Fighter {
                     fighter.hp = 0;
                     if(fighter.isMe){
                         document.getElementById("title").innerHTML = "You died."
-                        window.setTimeout(function(){document.getElementById("title").innerHTML = "<span class:'black'>.</span>"},5000)
+                        window.setTimeout(function(){document.getElementById("title").innerHTML = "<span class='black'>.</span>"},5000)
                     }
                     else {
                         document.getElementById("title").innerHTML = "You won!!!"

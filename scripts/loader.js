@@ -17,7 +17,9 @@ var canvas;
 var ctx;
 var enemyFighter;
 var enemyController;
+var gameStartTime = Date.now()
 function startGame() {
+    gameStartTime = Date.now()
     console.log(images)
     lastTick = Date.now()
     myController = new Controller();
@@ -30,6 +32,7 @@ function startGame() {
 function restart(){
     myFighter.reset()
     enemyFighter.reset()
+    gameStartTime = Date.now()
 }
 
 var myController;
@@ -139,3 +142,9 @@ document.onkeyup = function(e){
         myController.setModifier("down",false)
     }
 }
+
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }

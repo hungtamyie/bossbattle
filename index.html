@@ -48,11 +48,16 @@
                 font-family: monospace;
                 font-size: 70px;
             }
+            .timer {
+                color: white;
+                font-family: monospace;
+                font-size: 20px;
+            }
             .language {
                 font-size: 12px;
             }
             .black {
-                color: black
+                color: black !important;
             }
         </style>
         <script src="scripts/loader.js"></script>
@@ -63,7 +68,8 @@
     </head>
     <body>
         <div class="canvas_container">
-            <div class="title" id="title"><span class="black">,</span></div>
+            <div class="title" id="title"><span class="black">.</span></div>
+            <div class="timer" id="timer">5 seconds</div>
             <canvas id="canvas" width="240" height="100"></canvas>
             <button onclick="restart()" onkeyup="event.preventDefault()">Restart</button>
             <div><button onclick="american()" class="language" onkeyup="event.preventDefault()">American keyboard</button>

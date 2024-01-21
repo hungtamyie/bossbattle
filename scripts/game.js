@@ -23,6 +23,9 @@ function tick(){
             ctx.drawImage(image[0],image[1],image[2],image[3],image[4],image[5],image[6],image[7],image[8])
         }
     }
+    if(myFighter.hp != 0 && enemyFighter.hp != 0){
+        document.getElementById("timer").innerHTML = millisToMinutesAndSeconds(Date.now() - gameStartTime);
+    }
     window.requestAnimationFrame(tick)
 }
 
