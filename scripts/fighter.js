@@ -18,7 +18,7 @@ class Fighter {
         this.energy = 20;
         this.energyRegen = 0.05;
         if(!isMe) this.energyRegen = 0.1;
-        if(!isMe) this.hp = 60;
+        if(!isMe) this.hp = 100;
     }
     reset(){
         this.currentState = "idle";
@@ -36,7 +36,7 @@ class Fighter {
         this.energy = 20;
         this.energyRegen = 0.05;
         if(!this.isMe) this.energyRegen = 0.1;
-        if(!this.isMe) this.hp = 60;
+        if(!this.isMe) this.hp = 100;
     }
 
     readInputs(){
@@ -295,7 +295,7 @@ class Fighter {
         }
         if(!this.isMe){
             ctx.fillStyle = "red";
-            ctx.fillRect(120-Math.floor((this.hp*3.5)/2),97,Math.floor(this.hp*3.5),2) 
+            ctx.fillRect(120-Math.floor((this.hp*2.35)/2),97,Math.floor(this.hp*2.35),2) 
         }
         if(this.x - 18 < 0) this.x = 0 + 18;
         if(this.x + 12 > 240) this.x = 240 - 12;
