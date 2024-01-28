@@ -23,7 +23,7 @@ function startGame() {
     fighter = new Fighter("mc",myController);
     fighter.x = 38;
     fighter.y = 35;
-    fighter.currentState = "walk_f";
+    fighter.currentState = "idle";
     fighter.animFrame = 0;
     drawFighter()
 }
@@ -32,26 +32,6 @@ window.onload = function(){
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
     loadImages(IMAGES, startGame);
-
-    canvas.addEventListener("mousedown",function(event){
-        const rect = canvas.getBoundingClientRect()
-        const x = Math.round((event.clientX - rect.left)/10)
-        const y = Math.round((event.clientY - rect.top)/10)
-        dragStart = [x,y]
-        drawFighter()
-        console.log("x: " + x + " y: " + y)
-    })
-    
-    canvas.addEventListener("mouseup",function(event){
-        const rect = canvas.getBoundingClientRect()
-        const x = Math.round((event.clientX - rect.left)/10)
-        const y = Math.round((event.clientY - rect.top)/10)
-        hitboxes.push([dragStart[0]-fighter.x,dragStart[1]-fighter.y,Math.abs(dragStart[0]-x), Math.abs(dragStart[1]-y)])
-        drawFighter()
-        console.log("x: " + x + " y: " + y)
-        document.getElementById("out").innerHTML = JSON.stringify(hitboxes)
-    })
-    
 }
 
 var hitboxes = [];
@@ -79,7 +59,7 @@ function drawFighter(){
 
     for(let i = 0; i < hitboxes.length; i++){
         ctx.fillStyle = "rgba(0,255,0,0.3)";
-        ctx.fillRect(fighter.x+hitboxes[i][0],fighter.y+hitboxes[i][1],hitboxes[i][2],hitboxes[i][3]);
+        ctx.fillRect(fighter.x-hitboxes[i][0],fighter.y-hitboxes[i][1],hitboxes[i][2],hitboxes[i][3]);
     }
 }
 
@@ -87,12 +67,25 @@ function turnFighter(){
     fighter.direction=fighter.direction=="right"?"left":"right"
 }
 
-function undo(){
-    console.log("what?")
-    testundo()
+document.addEventListener("mousedown",function(event){
+    const rect = canvas.getBoundingClientRect()
+    const x = Math.round((event.clientX - rect.left)/10)
+    const y = Math.round((event.clientY - rect.top)/10)
+    dragStart = [x,y]
     drawFighter()
-}
+    console.log("x: " + x + " y: " + y)
+})
 
-function testundo(){
-    hitboxes=hitboxes.slice(0, -1);
+document.addEventListener("mouseup",function(event){
+    const rect = canvas.getBoundingClientRect()
+    const x = Math.round((event.clientX - rect.left)/10)
+    const y = Math.round((event.clientY - rect.top)/10)
+    hitboxes.push([fighter.x-dragStart[0],fighter.y-dragStart[1],Math.abs(dragStart[0]-x), Math.abs(dragStart[1]-y)])
+    drawFighter()
+    console.log("x: " + x + " y: " + y)
+})
+
+function undo(){
+    hitboxes.pop()
+    drawFighter()
 }
